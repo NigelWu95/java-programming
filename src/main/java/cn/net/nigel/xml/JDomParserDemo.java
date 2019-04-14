@@ -12,7 +12,8 @@ public class JDomParserDemo {
 
     public static void main(String[] args) {
         try {
-            File inputFile = new File("input.txt");
+            String path = DomParserDemo.class.getResource("").getPath() + "test.xml";
+            File inputFile = new File(path.replace("target/classes", "src/main/java"));
             SAXBuilder saxBuilder = new SAXBuilder();
             Document document = saxBuilder.build(inputFile);
             System.out.println("Root element :" + document.getRootElement().getName());

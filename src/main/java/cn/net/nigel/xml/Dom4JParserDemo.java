@@ -13,7 +13,8 @@ public class Dom4JParserDemo {
 
     public static void main(String[] args) {
         try {
-            File inputFile = new File("input.txt");
+            String path = DomParserDemo.class.getResource("").getPath() + "test.xml";
+            File inputFile = new File(path.replace("target/classes", "src/main/java"));
             SAXReader reader = new SAXReader();
             Document document = reader.read( inputFile );
             System.out.println("Root element :" + document.getRootElement().getName());
