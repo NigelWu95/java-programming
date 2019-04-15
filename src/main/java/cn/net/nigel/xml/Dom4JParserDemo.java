@@ -16,10 +16,11 @@ public class Dom4JParserDemo {
             String path = DomParserDemo.class.getResource("").getPath() + "test.xml";
             File inputFile = new File(path.replace("target/classes", "src/main/java"));
             SAXReader reader = new SAXReader();
-            Document document = reader.read( inputFile );
+            Document document = reader.read(inputFile);
             System.out.println("Root element :" + document.getRootElement().getName());
             Element classElement = document.getRootElement();
-            List<Node> nodes = document.selectNodes("/class/student" );
+            List<Node> nodes = classElement.selectNodes("/class/student");
+//            List<Node> nodes = document.selectNodes("/class/student");
             System.out.println("----------------------------");
             for (Node node : nodes) {
                 System.out.println("\nCurrent Element :" + node.getName());
