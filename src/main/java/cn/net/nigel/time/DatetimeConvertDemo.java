@@ -38,8 +38,10 @@ public class DatetimeConvertDemo {
         System.out.println(LocalDateTime.ofInstant(Instant.now(), ZoneId.systemDefault()));
         System.out.println(date.toInstant().atOffset(ZoneOffset.of("+8")).toLocalDateTime());
         System.out.println(ZoneOffset.UTC);
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
-        df.setTimeZone(TimeZone.getTimeZone("UTC"));
-        System.out.println(df.parse("2014-08-23T09:20:05Z").toString());
+        SimpleDateFormat df1 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
+        df1.setTimeZone(TimeZone.getTimeZone("UTC"));
+        System.out.println(df1.parse("2014-08-23T09:20:05Z").toString());
+        SimpleDateFormat df2 = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX");
+        System.out.println(df2.parse("2014-08-23T09:20:05+08:00").toString());
     }
 }
