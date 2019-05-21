@@ -2,8 +2,14 @@ package cn.net.nigel.time;
 
 import java.text.SimpleDateFormat;
 import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Date;
+import java.util.Locale;
 import java.util.TimeZone;
+
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
+import static java.time.format.DateTimeFormatter.ISO_LOCAL_TIME;
 
 public class DatetimeConvertDemo {
 
@@ -19,7 +25,14 @@ public class DatetimeConvertDemo {
         System.out.println(sdf2.format(date));
 //        2018-01-01T12:12:12.999750909
         System.out.println(LocalDateTime.parse("2018-01-01T12:12:12.999750909"));
-//        System.out.println(LocalDateTime.parse("2018-07-19T02:41:06.990395202Z"));
+        System.out.println(LocalDateTime.parse("2018-07-19T02:41:06.990395202Z", new DateTimeFormatterBuilder()
+                .parseCaseInsensitive()
+                .append(ISO_LOCAL_DATE)
+                .appendLiteral('T')
+                .append(ISO_LOCAL_TIME)
+                .appendLiteral('Z')
+                .toFormatter(Locale.CHINA)));
+        System.out.println(DateTimeFormatter.BASIC_ISO_DATE);
 //        1970-01-01T02:46:40Z
         System.out.println(Instant.ofEpochSecond(10000));
 //        999000000
