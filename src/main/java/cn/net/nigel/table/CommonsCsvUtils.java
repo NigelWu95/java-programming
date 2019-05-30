@@ -46,21 +46,18 @@ public class CommonsCsvUtils {
     }
 
     public static void exportByList(String[] headers, List<List<String>> dataList, OutputStream os) {
-        OutputStreamWriter osw = null;
-        CSVFormat csvFormat = null;
-        CSVPrinter csvPrinter = null;
         try {
-            osw = new OutputStreamWriter(os, "GBK");//如果是UTF-8时，WPS打开是正常显示，而微软的excel打开是乱码,
-            csvFormat = CSVFormat.DEFAULT.withHeader(headers);
-            csvPrinter = new CSVPrinter(osw, csvFormat);
+            OutputStreamWriter osw = new OutputStreamWriter(os);
+            CSVFormat csvFormat = CSVFormat.DEFAULT.withHeader(headers);
+            CSVPrinter csvPrinter = new CSVPrinter(osw, csvFormat);
             for (int i = 0; i < dataList.size(); i++) {
                 List<String> values = dataList.get(i);
                 csvPrinter.printRecord(values);
             }
+            csvPrinter.close();
+            osw.close();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            close(os, csvPrinter);
         }
     }
 
@@ -71,14 +68,10 @@ public class CommonsCsvUtils {
     }
 
     public static void exportByLinked(String[] headers, List<LinkedHashMap<String, Object>> dataList, OutputStream os) {
-        OutputStreamWriter osw = null;
-        CSVFormat csvFormat = null;
-        CSVPrinter csvPrinter = null;
         try {
-
-            osw = new OutputStreamWriter(os, "GBK");
-            csvFormat = CSVFormat.DEFAULT.withHeader(headers);
-            csvPrinter = new CSVPrinter(osw, csvFormat);
+            OutputStreamWriter osw = new OutputStreamWriter(os, "GBK");
+            CSVFormat csvFormat = CSVFormat.DEFAULT.withHeader(headers);
+            CSVPrinter csvPrinter = new CSVPrinter(osw, csvFormat);
 
             for (int i = 0; i < dataList.size(); i++) {
                 List<String> values = new ArrayList<String>();
@@ -89,37 +82,10 @@ public class CommonsCsvUtils {
                 }
                 csvPrinter.printRecord(values);
             }
+            csvPrinter.close();
+            osw.close();
         } catch (Exception e) {
             e.printStackTrace();
-        } finally {
-            close(os, csvPrinter);
-        }
-    }
-
-    private static void close(OutputStream os, CSVPrinter csvPrinter) {
-        if (csvPrinter != null) {
-            try {
-                csvPrinter.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                csvPrinter.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        if (os != null) {
-            try {
-                os.flush();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            try {
-                os.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
         }
     }
 }
