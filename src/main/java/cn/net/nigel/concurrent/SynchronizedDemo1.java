@@ -2,11 +2,11 @@ package cn.net.nigel.concurrent;
 
 public class SynchronizedDemo1 {
 
-    private int statId;
+    private int startId;
     private String name;
 
-    public SynchronizedDemo1(int statId, String name) {
-        this.statId = statId;
+    public SynchronizedDemo1(int startId, String name) {
+        this.startId = startId;
         this.name = name;
     }
 
@@ -19,15 +19,15 @@ public class SynchronizedDemo1 {
     }
 
     public synchronized void printId() {
-        System.out.println(statId++);
+        System.out.println(startId++);
     }
 
     public synchronized void printName() {
-        statId++;
+        startId++;
         System.out.println(name);
     }
 
     public void print() {
-        System.out.println("Id: " + statId++ + ", name: " + name);
+        System.out.println("Id: " + startId++ + ", name: " + name);
     }
 }
