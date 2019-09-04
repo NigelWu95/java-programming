@@ -25,7 +25,7 @@ public class RandomAccess {
             //循环读出文件内容
             while ((line = raf.readLine()) != null) {
                 // 文件当前偏移量 返回文件记录指针的当前位置
-                final long point = raf.getFilePointer() + 1;
+                final long point = raf.getFilePointer();
                 // 查找要替换的内容
                 if (line.contains(oldStr)) {
                     //修改内容,line读出整行数据
@@ -50,8 +50,8 @@ public class RandomAccess {
     }
     public static void main(String[]args){
         boolean b=modifyFileContent("/Users/wubingheng/.qsuits.account",
-                "123456-qiniu-id=SVO3ylUZNTU3VHBzZVVNOG92cGZVaGF3OGdmYTJEUTAxMDRaU2NNLUJUSWNCeA==",
-                "123456789niu-id=SVO3ylUZNTU3VHBzZVVNOG92cGZVaGF3OGdmYTJEUTAxMDRaU2NNLUJUSWNCeA==");
+                "test-qiniu-secret=t2HxtFeLa0FzZUQxb29zV1pYU0FEYlVONFdzQjl5Ynp0WU5SaWx4TjZFQXpneQ==",
+                "12345678910niu-id=SVO3ylUZNTU3VHBzZVVNOG92cGZVaGF3OGdmYTJEUTAxMDRaU2NNLUJUSWNCeA==");
         System.out.println(b);
     }
 }
