@@ -17,10 +17,10 @@ public class EncryptAlgorithms {
 
     public static void main(String[] args) {
         try {
-            //base64();
-            //aes();
+            base64();
+            aes();
             //sm();
-            rsa();
+//            rsa();
             //sing();
         } catch (Exception e) {
             e.printStackTrace();
@@ -141,8 +141,8 @@ public class EncryptAlgorithms {
      * AES是现在对称加密算法中最流行的算法之一。加密密钥和解密密钥相同，加密运算和解密运算互为逆运算。是一种初等的加密算法。主要的算法有DES（3DES）、AES、PBE、IDEA。
      */
     static void aes() throws Exception {
-        String src = "name=张三";//加密内容
-        String pkey = "123";//秘钥
+        String src = "557TpseUM8ovpfUhaw8gfa2DQ0104ZScM-BTIcBx";//加密内容
+        String pkey = "test";//秘钥
 
         //配置--加密与解密公用的
         KeyGenerator kgen = KeyGenerator.getInstance("AES");
