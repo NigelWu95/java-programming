@@ -50,8 +50,8 @@ public class RandomAccess {
     }
     public static void main(String[]args){
         boolean b=modifyFileContent("/Users/wubingheng/.qsuits.account",
-                "test-qiniu-secret=t2HxtFeLa0FzZUQxb29zV1pYU0FEYlVONFdzQjl5Ynp0WU5SaWx4TjZFQXpneQ==",
-                "12345678910niu-id=SVO3ylUZNTU3VHBzZVVNOG92cGZVaGF3OGdmYTJEUTAxMDRaU2NNLUJUSWNCeA==");
+                "test-qiniu-id=00k9oAu2QVByLTByMTZUSlZXaFI2UTlVbG9yT1A5dDlhd2NYamFsdXFlaUY0cw==",
+                "1234567niu-id=SVO3ylUZNTU3VHBzZVVNOG92cGZVaGF3OGdmYTJEUTAxMDRaU2NNLUJUSWNCeA==");
         System.out.println(b);
     }
 }
