@@ -19,25 +19,25 @@ public class ScheduleTest {
         singleThread.shutdown();
     }
 
-}
+    static class MyScheduledTask implements Runnable {
 
-class MyScheduledTask implements Runnable {
+        private String name;
 
-    private String tname;
-
-    public MyScheduledTask(String tname) {
-        this.tname = tname;
-    }
-
-    @Override
-    public void run() {
-        System.out.println(tname + "任务开始执行");
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        public MyScheduledTask(String name) {
+            this.name = name;
         }
-        System.out.println(tname + "任务执行完毕！！！");
+
+        @Override
+        public void run() {
+            System.out.println(name + "任务开始执行");
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println(name + "任务执行完毕！！！");
+        }
+
     }
 
 }
