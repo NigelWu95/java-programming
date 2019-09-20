@@ -90,10 +90,10 @@ public class MainTest {
         servicePool.execute(demo1::printId);
         servicePool.execute(demo1::printName);
 //        demo1.sleep();
-//        servicePool.shutdown();
+        servicePool.shutdown();
 //        servicePool.shutdownNow();
 //        System.out.println(servicePool.isTerminated());
 //        servicePool.wait();
-        servicePool.notify();
+//        servicePool.notify();
     }
 }
