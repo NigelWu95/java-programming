@@ -1,6 +1,5 @@
 package cn.net.nigel;
 
-import java.io.IOException;
 import java.util.*;
 
 public class Test {
@@ -164,8 +163,10 @@ public class Test {
 //        int[][] edges = {{1, 2, 20}, {1, 3, 50}, {1, 4, 70}, {1, 5, 90}, {2, 3, 30}, {3, 4, 40}, {4, 5, 60}};
 //        int n = 5;
         int start = 1;
+
         Set<Integer> nodeSet = new HashSet<Integer>(){{ add(start); }};
         Set<int[]> edgeSet = new HashSet<>();
+        Set<int[]> toRmEdges = new HashSet<>();
         for (int[] edge : edges) {
             if (edge.length != 3) {
                 throw new RuntimeException("wrong edge: " + Arrays.toString(edge));
@@ -183,14 +184,19 @@ public class Test {
         int[] minEdge = new int[3];
         for (int i = 1; i < n; i++) {
             min = Integer.MAX_VALUE;
+            toRmEdges.clear();
             for (int id : nodeSet) {
                 for (int[] edge : edgeSet) {
+                    if (nodeSet.contains(edge[1]) && nodeSet.contains(edge[0])) {
+                        toRmEdges.add(edge);
+                        continue;
+                    }
                     if (edge[2] < min) {
-                        if (edge[0] == id && !nodeSet.contains(edge[1])) {
+                        if (edge[0] == id) {
                             min = edge[2];
                             minIndex = edge[1];
                             minEdge = edge;
-                        } else if (edge[1] == id && !nodeSet.contains(edge[0])) {
+                        } else if (edge[1] == id) {
                             min = edge[2];
                             minIndex = edge[0];
                             minEdge = edge;
@@ -201,6 +207,7 @@ public class Test {
             sum += min;
             nodeSet.add(minIndex);
             edgeSet.remove(minEdge);
+            edgeSet.removeAll(toRmEdges);
         }
         System.out.println(sum);
     }
