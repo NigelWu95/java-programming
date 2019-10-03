@@ -39,9 +39,9 @@ class MyThread implements Runnable {
     }
 
     public void run() {
-        if(flag){
+        if (flag) {
             this.waitMethod();
-        }else{
+        } else {
             this.notifyMethod();
         }
     }
@@ -83,6 +83,8 @@ class Test {
             threadI.start();
         }
         Thread.sleep(1000);
-        thread2.notifyAllMethod();
+//        thread2.notifyAllMethod();
+        thread2.run();
+        thread2.notifyMethod();
     }
 }
