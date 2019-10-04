@@ -1,11 +1,11 @@
-package cn.net.nigel.concurrent.wait_notify;
+package cn.net.nigel.concurrent;
 
-class MyThread implements Runnable {
+class WaitNotifyTest implements Runnable {
 
     private final Object object;
     private boolean flag;
 
-    public MyThread(Object object, boolean flag) {
+    public WaitNotifyTest(Object object, boolean flag) {
         this.object = object;
         this.flag = flag;
     }
@@ -45,17 +45,14 @@ class MyThread implements Runnable {
             this.notifyMethod();
         }
     }
-}
-
-class Test {
 
     public static void main(String[] args) throws InterruptedException {
 
         final Object obj = new Object();
 
         // #1
-//        MyThread thread1 = new MyThread(obj, true);
-//        MyThread thread2 = new MyThread(obj, false);
+//        WaitNotifyTest thread1 = new WaitNotifyTest(obj, true);
+//        WaitNotifyTest thread2 = new WaitNotifyTest(obj, false);
 //        Thread waitThread = new Thread(thread1, "等待线程");
 //        Thread notifyThread = new Thread(thread2, "唤醒线程");
 //        waitThread.start();
@@ -63,8 +60,8 @@ class Test {
 //        notifyThread.start();
 
         // #2
-//        MyThread thread1 = new MyThread(obj,true);
-//        MyThread thread2 = new MyThread(obj,false);
+//        WaitNotifyTest thread1 = new WaitNotifyTest(obj,true);
+//        WaitNotifyTest thread2 = new WaitNotifyTest(obj,false);
 //        for(int i = 0; i<5; i++) {
 //            Thread threadI = new Thread(thread1, "等待线程" + i);
 //            threadI.start();
@@ -76,8 +73,8 @@ class Test {
 //        }
 
         // #3
-        MyThread thread1 = new MyThread(obj,true);
-        MyThread thread2 = new MyThread(obj,false);
+        WaitNotifyTest thread1 = new WaitNotifyTest(obj,true);
+        WaitNotifyTest thread2 = new WaitNotifyTest(obj,false);
         for(int i = 0; i<5; i++) {
             Thread threadI = new Thread(thread1, "等待线程" + i);
             threadI.start();
