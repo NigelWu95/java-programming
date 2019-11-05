@@ -7,7 +7,8 @@ import java.util.concurrent.TimeUnit;
 public class MainTest {
 
     public static void main(String[] args) throws InterruptedException {
-        instanceTest();
+        shutdownNowTest();
+//        instanceTest();
 //        staticTest();
     }
 
@@ -90,10 +91,29 @@ public class MainTest {
         servicePool.execute(demo1::printId);
         servicePool.execute(demo1::printName);
 //        demo1.sleep();
-        servicePool.shutdown();
-//        servicePool.shutdownNow();
+//        servicePool.shutdown();
+        servicePool.shutdownNow();
 //        System.out.println(servicePool.isTerminated());
-//        servicePool.wait();
-//        servicePool.notify();
+    }
+
+    public static void shutdownNowTest() throws InterruptedException {
+        ExecutorService servicePool = Executors.newCachedThreadPool();
+        servicePool.execute(new SynchronizedDemo1(1, "name1")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(2, "name2")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(3, "name3")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(4, "name4")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(5, "name5")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(6, "name6")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(7, "name7")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(8, "name8")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(9, "name9")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(10, "name10")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(11, "name11")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(12, "name12")::testAlwaysRun);
+        servicePool.execute(new SynchronizedDemo1(13, "name13")::testAlwaysRun);
+        servicePool.shutdown();
+        servicePool.shutdownNow();
+        System.out.println("shutdown");
+//        System.exit(0);
     }
 }

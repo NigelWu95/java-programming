@@ -64,6 +64,11 @@
             <version>28.1-jre</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.17</version>
+        </dependency>
 
     </dependencies>
 

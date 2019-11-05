@@ -50,4 +50,16 @@ public class SynchronizedDemo1 {
         }
         System.out.println("innerEnd: " + Thread.currentThread());
     }
+
+    public void testAlwaysRun() {
+        long i = 0;
+        try {
+            while (i < Long.MAX_VALUE) {
+                i++;
+                System.out.println(i);
+            }
+        } finally {
+            System.out.println("max: " + i);
+        }
+    }
 }
