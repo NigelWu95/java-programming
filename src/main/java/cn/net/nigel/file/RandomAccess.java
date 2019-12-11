@@ -49,7 +49,7 @@ public class RandomAccess {
         return true;
     }
     public static void main(String[]args){
-        boolean b=modifyFileContent("/Users/wubingheng/.qsuits.account",
+        boolean b = modifyFileContent("/Users/wubingheng/.qsuits.account",
                 "test-qiniu-id=00k9oAu2QVByLTByMTZUSlZXaFI2UTlVbG9yT1A5dDlhd2NYamFsdXFlaUY0cw==",
                 "1234567niu-id=SVO3ylUZNTU3VHBzZVVNOG92cGZVaGF3OGdmYTJEUTAxMDRaU2NNLUJUSWNCeA==");
         System.out.println(b);
