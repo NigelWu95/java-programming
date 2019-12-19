@@ -14,8 +14,8 @@ public class RandomAccessTest {
         System.out.println("length: " + accessFile.length());
         String line;
 //        accessFile.seek(accessFile.length() - 10);
-
-//        System.out.println(accessFile.readLine());
+        accessFile.seek(5);
+        System.out.println(accessFile.readLine());
         byte[] bytes = new byte[1];
 //        accessFile.seek(1);
 //        accessFile.read(bytes);
@@ -38,10 +38,10 @@ public class RandomAccessTest {
         if (pos > 0) accessFile.seek(pos + 2);
 //        accessFile.read(bytes);
 //        System.out.println(s);
-        System.out.println(accessFile.readLine());
-//        line = accessFile.readLine();
-//        line = new String(line.getBytes(StandardCharsets.ISO_8859_1));
-//        System.out.println(new String(line.getBytes(StandardCharsets.ISO_8859_1)));
+//        System.out.println(accessFile.readLine());
+//        line = new String(accessFile.readLine().getBytes(StandardCharsets.ISO_8859_1));
+//        System.out.println(line);
+        System.out.println(new String(accessFile.readLine().getBytes(StandardCharsets.ISO_8859_1)));
 //        System.out.println("### 4.在华为云 redis 服务中购买一个4.0集群，使用 webcli 连接并执行 cluster 的相关命令（选做）".equals(line));
 //        while ((line = accessFile.readLine()) != null) {
 //
